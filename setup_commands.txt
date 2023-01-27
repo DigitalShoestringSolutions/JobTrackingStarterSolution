@@ -1,0 +1,56 @@
+# Commands to Install Software:
+sudo apt-get update
+sudo apt-get install git
+
+
+# Install Docker
+sudo apt-get install curl
+curl -sSL https://get.docker.com | sh
+
+# restart
+
+sudo usermod -a -G docker $USER
+sudo systemctl start docker
+sudo systemctl enable docker
+docker -v
+
+sudo apt-get install docker-compose-plugin
+docker compose version 
+
+# download files
+
+# navigate terminal to <solution files>/logging
+./setup_logging.sh
+
+docker compose build
+
+docker compose run job-db bash
+python manage.py createsuperuser
+exit
+
+# Starting the solution
+./start_application.sh
+or
+Double click start_application.sh in the file explorer and select run in terminal
+
+# Stopping the solution
+./stop_application.sh
+or
+Double click stop_application.sh in the file explorer and select run in terminal
+
+# finding USB scanner serial
+lsusb
+
+# finding connection point
+ls /dev/input/by-path 
+
+# Website links:
+Job Tracking Dashboard -    http://localhost/
+Database Admin -            http://localhost:8001/admin/
+Manual Input -              http://localhost:8080
+
+# log files are found at:
+/var/log/containers/
+
+
+
