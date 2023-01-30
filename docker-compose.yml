@@ -14,7 +14,7 @@ services:
                 options:
                     tag: docker-barcode-1
             restart: unless-stopped
-
+       
         barcode-2:
             extends:
                 file: barcode_dc/app.yml
@@ -76,7 +76,9 @@ services:
                     options:
                             tag: docker-dashboard-ui
             restart: unless-stopped
-
+            env_file:
+                - django_secret_key
+ 
         job-db:
             extends:
                 file: locations_sds/app.yml
@@ -90,7 +92,9 @@ services:
                     options:
                             tag: docker-job-db
             restart: unless-stopped
-
+            env_file:
+                - django_secret_key
+ 
         user-input:
             extends:
                 file: user_input_dc/app.yml
@@ -104,7 +108,9 @@ services:
                     options:
                             tag: docker-user-input
             restart: unless-stopped
-
+            env_file:
+                - django_secret_key
+ 
         mqtt-broker:
             extends:
                 file: mqtt_broker/app.yml
