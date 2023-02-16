@@ -1,13 +1,13 @@
 # Commands to Install Software:
 sudo apt-get update
-sudo apt-get install git
 
+# download files
+
+git clone git@github.com:DigitalShoestringSolutions/JobTrackingStarterSolution.git ~/JobTrackingStarterSolution 
 
 # Install Docker
-sudo apt-get install curl
+sudo apt-get install curl -y
 curl -sSL https://get.docker.com | sh
-
-# restart
 
 sudo usermod -a -G docker $USER
 sudo systemctl start docker
@@ -17,26 +17,32 @@ docker -v
 sudo apt-get install docker-compose-plugin
 docker compose version 
 
-# download files
+# restart
 
 # navigate terminal to <solution files>/logging
 ./setup_logging.sh
 
+# navigate terminal to <solution files>
+./setup_keys.sh
+
 docker compose build
+./start.sh
 
 docker compose run job-db bash
 python manage.py createsuperuser
 exit
 
+./stop.sh
+
 # Starting the solution
-./start_application.sh
+./start.sh
 or
-Double click start_application.sh in the file explorer and select run in terminal
+Double click start.sh in the file explorer and select run in terminal
 
 # Stopping the solution
-./stop_application.sh
+./stop.sh
 or
-Double click stop_application.sh in the file explorer and select run in terminal
+Double click stop.sh in the file explorer and select run in terminal
 
 # finding USB scanner serial
 lsusb
