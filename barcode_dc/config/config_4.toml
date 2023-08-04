@@ -5,7 +5,7 @@ connection_point=["0","1.4"]
 [[variable]]
     name="location"
     type="static"
-    value="Location 4"
+    value="Complete"
 
 [[variable]]
     name="id"
