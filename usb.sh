@@ -11,7 +11,7 @@ while true; do
     #echo "$initial_devices"
     # Loop until a USB device is removed
 
-    # Prompt the user to unplug the USB device
+    # Prompt the user to plug in the USB device
     echo "Please plug in the USB device and press Enter to continue."
     read -r
     sleep 3s
@@ -26,10 +26,10 @@ while true; do
     removed_input=$(comm -3 <(echo "$initial_inputs") <(echo "$updated_inputs")| awk '{print}')
 
     # echo "Device Removed: $removed_device" 
-    echo "Input Removed: $removed_input" 
+    # echo "Input Removed: $removed_input" 
+    # Extract the Device information
     ID=$(echo "$removed_device" | sed -n 's/.*ID \([^ ]*\).*/\1/p' | tr ':' '_' | uniq)
     platform=$(echo "$removed_input" | sed 's/.*platform-\(.*\)-usb.*/\1/' | uniq)
-    # platform=$(echo "$removed_input" | sed 's/.*platform-\([^\.]*\).*/\1/' | uniq) # sed 's/.*platform-\(.*\)\..*/\1/')
     connection_port=$(echo "$removed_input" | sed 's/.*-usb-\([^:]*:[^:]*\).*/\1/' | uniq) # sed 's/.*platform-\(.*\)\..*/\1/')
 
     echo -e  "ID: \t \t \t $ID"

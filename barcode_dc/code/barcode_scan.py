@@ -16,7 +16,6 @@ logger = logging.getLogger("main.barcode_scan")
 
 __dt = -1 * (time.timezone if (time.localtime().tm_isdst == 0) else time.altzone)
 tz = datetime.timezone(datetime.timedelta(seconds=__dt))
-### Need to add platform variable
 
 
 class BarcodeScanner(multiprocessing.Process):
