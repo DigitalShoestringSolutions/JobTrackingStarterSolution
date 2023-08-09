@@ -1,11 +1,12 @@
 [input.scanner]
-serial="0581_0115"
-connection_point=["0","1.2"]
+serial="0581_011c"
+connection_point=["0","1"]
+platform = "fe3e0000.usb"
 
 [[variable]]
     name="location"
     type="static"
-    value="Location 2"
+    value="Location 1"
 
 [[variable]]
     name="id"

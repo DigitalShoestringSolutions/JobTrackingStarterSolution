@@ -31,37 +31,37 @@ services:
             volumes:
                 - ./barcode_dc/config/config_2.toml:/app/config.toml
 
-#        barcode-3:
-#            extends:
-#                file: barcode_dc/app.yml
-#                service: app
-#            networks:
-#                internal:
-#                    aliases:
-#                        - bs3.docker.local
-#            logging:
-#                driver: syslog
-#                options:
-#                    tag: docker-barcode-3
-#            restart: unless-stopped
-#            volumes:
-#                - ./barcode_dc/config/config_3.toml:/app/config.toml
+        barcode-3:
+            extends:
+                file: barcode_dc/app.yml
+                service: app
+            networks:
+                internal:
+                    aliases:
+                        - bs3.docker.local
+            logging:
+                driver: syslog
+                options:
+                    tag: docker-barcode-3
+            restart: unless-stopped
+            volumes:
+                - ./barcode_dc/config/config_3.toml:/app/config.toml
 
-#        barcode-4:
-#            extends:
-#                file: barcode_dc/app.yml
-#                service: app
-#            networks:
-#                internal:
-#                    aliases:
-#                        - bs4.docker.local
-#            logging:
-#                driver: syslog
-#                options:
-#                    tag: docker-barcode-4
-#            restart: unless-stopped
-#            volumes:
-#                - ./barcode_dc/config/config_4.toml:/app/config.toml
+        barcode-4:
+            extends:
+                file: barcode_dc/app.yml
+                service: app
+            networks:
+                internal:
+                    aliases:
+                        - bs4.docker.local
+            logging:
+                driver: syslog
+                options:
+                    tag: docker-barcode-4
+            restart: unless-stopped
+            volumes:
+                - ./barcode_dc/config/config_4.toml:/app/config.toml
 
         dashboard-ui:
             extends:
