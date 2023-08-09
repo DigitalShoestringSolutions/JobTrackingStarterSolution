@@ -25,7 +25,7 @@ class BarcodeScanner(multiprocessing.Process):
         scanner_config = config['input']['scanner']
         self.scanner_serial = scanner_config.get('serial', "")
         self.connection_point = scanner_config.get('connection_point', ['*'])
-
+        self.platform = scanner_config.get('platform',"")
         # declaration
         self.udev_ctx = None
         self.scanner_device = None
@@ -74,13 +74,15 @@ class BarcodeScanner(multiprocessing.Process):
                     if dev.properties['ID_INPUT_KEYBOARD'] == "1" and (
                             serial_option_1 == self.scanner_serial or serial_option_2 == self.scanner_serial):
                         if self.connection_point[0] != '*':
-                            _, connection_point = dev.properties['ID_PATH'].split('-usb-')
+                            platform, connection_point = dev.properties['ID_PATH'].split('-usb-')
                             cp_entries = connection_point.split(':')
                             match = True
                             for i in range(0, len(self.connection_point)):
                                 if self.connection_point[i] != cp_entries[i]:
                                     match = False
                                     break
+                            match = True if self.platform in platform else False
+
                             if not match:
                                 continue
 
