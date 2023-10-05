@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 while true; do
     # Prompt the user to plug in the USB device
