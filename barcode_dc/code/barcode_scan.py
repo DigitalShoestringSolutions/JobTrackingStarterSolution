@@ -67,7 +67,8 @@ class BarcodeScanner(multiprocessing.Process):
 
         for dev in self.udev_ctx.list_devices(subsystem='input', ID_BUS='usb'):
             if dev.device_node is not None:
-
+                # logger.info(dev)
+                # logger.info(dev.properties['ID_PATH'].split('-usb-'))
                 try:
                     serial_option_1 = dev.properties['ID_SERIAL']
                     serial_option_2 = f"{dev.properties['ID_VENDOR_ID']}_{dev.properties['ID_MODEL_ID']}"
@@ -81,7 +82,8 @@ class BarcodeScanner(multiprocessing.Process):
                                 if self.connection_point[i] != cp_entries[i]:
                                     match = False
                                     break
-                            match = True if self.platform in platform else False
+                            if match and self.platform not in platform:
+                                match = False
 
                             if not match:
                                 continue
